@@ -1,7 +1,21 @@
-Splitting a mixed type pdv array into character and numeric arrays
+%let pgm=utl_splitting_a_mixed_type_pdv_array_x1_x7_into_character_and_numeric_arrays;
+
+SAS Forum: Splitting a mixed type pdv array x1-x7 into character and numeric arrays
+
+SOAPBOX ON
+ Less is more
+ Having just two datatypes leads to powerful data manipulation algorithms.
+ R has 4 numeric(integer,numeric,logical and complex)  and 3 character types(charcater,raw and factor?).
+ R is a big headache when inter operating with other applications and databases.
+ SAS needs a 128bit double?
+SOAPBOX OFF
 
 Problem:
   Split a table into two tables, one numeric and one character
+
+see github
+https://tinyurl.com/ycg2chqm
+https://github.com/rogerjdeangelis/utl_splitting_a_mixed_type_pdv_array_into_character_and_numeric_arrays
 
 Astounding profile
 https://communities.sas.com/t5/user/viewprofilepage/user-id/4954
@@ -26,29 +40,34 @@ https://communities.sas.com/t5/SAS-Programming/Array-variables-numeric-and-chara
 INPUT
 =====
 
- WORK.HAVE
+ WORK.HAVE  (mixed type pdv)
 
-   Variables in Creation Order
+  Variables in Creation Order
 
-  #    Variable    Type    Len
+ #    Variable    Type    Len
 
-  1    X1          Num       8
+ 1    ROGER       Num       8
+ 2    X1          Num       8
 
-  2    X2          Char      1
-  3    X3          Char      1
+ 3    X2          Char      1
+ 4    X3          Char      1
 
-  4    X4          Num       8
-  5    X5          Num       8
+ 5    X4          Num       8
+ 6    X5          Num       8
 
-  6    X6          Char      1
+ 7    X6          Char      1
+ 8    X7          Num       8
 
-  7    X7          Num       8
-
+ 9    MARY        Char      4
 
 EXAMPLE OUTPUT
 --------------
 
- WORK.WANTCHR
+WORK.WANTCHR total obs=1
+
+    X2    X3    X6
+
+    A     B     C
 
    Variables in Creation Order
 
@@ -59,7 +78,11 @@ EXAMPLE OUTPUT
   3    X6          Char      1
 
 
- WORK.WANTNUM
+WORK.WANTNUM total obs=1
+
+    X1    X4    X5    X7
+
+     0     4     2     9
 
    Variables in Creation Order
 
@@ -87,17 +110,7 @@ NOTE: The data set WORK.WANTNUM has 1 observations and 4 variables.
 OUTPUT
 ======
 
-WORK.WANTCHR total obs=1
-
-    X2    X3    X6
-
-    A     B     C
-
-WORK.WANTNUM total obs=1
-
-    X1    X4    X5    X7
-
-     0     1     2     9
+see example output
 
 *                _              _       _
  _ __ ___   __ _| | _____    __| | __ _| |_ __ _
@@ -108,7 +121,7 @@ WORK.WANTNUM total obs=1
 ;
 
 data have;
-retain x1 0 x2 'A' x3 'B' x4 1 x5 2 x6 'C' x7 9;
+retain  roger 1 x1 0 x2 'A' x3 'B' x4 4 x5 2 x6 'C' x7 9 mary 'MARY';
 run;quit;
 
 *          _       _   _
@@ -120,3 +133,6 @@ run;quit;
 ;
 
 see process
+
+
+
