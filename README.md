@@ -1,0 +1,2 @@
+# utl_splitting_a_mixed_type_pdv_array_into_character_and_numeric_arrays
+Splitting a mixed type pdv array into character and numeric arrays.  Keywords: sas sql join merge big data analytics macros oracle teradata mysql sas communities stackoverflow statistics artificial inteligence AI Python R Java Javascript WPS Matlab SPSS Scala Perl C C# Excel MS Access JSON graphics maps NLP natural language processing machine learning igraph DOSUBL DOW loop stackoverflow SAS community.
